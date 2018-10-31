@@ -1,0 +1,38 @@
+hosts:
+  - address: 192.168.1.57
+    user: k8s
+    role: master
+    container_runtime: docker
+  - address: 192.168.1.59
+    user: k8s
+    role: worker
+    container_runtime: docker
+  - address: 192.168.1.60
+    user: k8s
+    role: worker
+    container_runtime: docker
+  - address: 192.168.1.61
+    user: k8s
+    role: worker
+    container_runtime: docker
+  - address: 192.168.1.63
+    user: k8s
+    role: worker
+    container_runtime: docker
+  - address: 192.168.1.62
+    user: k8s
+    role: worker
+    container_runtime: docker
+  - address: 192.168.1.64
+    user: k8s
+    role: worker
+    container_runtime: docker
+  - address: 192.168.1.66
+    user: k8s
+    role: worker
+    container_runtime: docker
+addons:
+  ingress-nginx:
+    enabled: true
+  kubernetes-dashboard:
+    enabled: true
