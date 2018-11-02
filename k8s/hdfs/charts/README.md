@@ -5,6 +5,8 @@ title: HDFS charts
 
 # HDFS charts
 
+**Credits:** This is an exerpt of [kubernetes-HDFS](https://github.com/apache-spark-on-k8s/kubernetes-HDFS/tree/master/charts) repo. The charts/hdfs-k8s/values.yaml storage classes have been modified to suit the environment.
+
 Helm charts for launching HDFS daemons in a K8s cluster. The main entry-point
 chart is `hdfs-k8s`, which is a uber-chart that specifies other charts as
 dependency subcharts. This means you can launch all HDFS components using
