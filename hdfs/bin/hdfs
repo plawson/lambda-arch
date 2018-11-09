@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# This script is a proxy to the hdfs command deployed in the k8s cluster.
+# It uses the HDfs client pod.
+
+# Usage example
+# hdfs dfsadmin -report
+# hdfs haadmin -getServiceState nn0
+# hdfs haadmin -getServiceState nn1
+# hdfs dfs -ls
+
+
+_CLIENT=$(kubectl get pods -l app=hdfs-client,release=my-hdfs -o name | cut -d/ -f 2)
+if [[ ! -z "$_CLIENT" ]]; then
+    kubectl exec $_CLIENT -- hdfs $*
+else
+    echo "ERROR: The HDFS client pod is not deployed in the k8s cluster"
+fi
