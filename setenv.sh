@@ -1,7 +1,7 @@
-LBDARCH_HOME=$(pwd)
+#LBDARCH_HOME=$(pwd)
 
 # Update path
-PATH=$PATH:$LBDARCH_HOME/hdfs/bin
+#PATH=$PATH:$LBDARCH_HOME/hdfs/bin
 
 # Exports
-export LBDARCH_HOME
+#export LBDARCH_HOME
