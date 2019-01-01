@@ -2,7 +2,7 @@
 This is a prototype environment base on single and multi nodes clusters. The nodes are VirtualBoxes VMs managed with the customization scripts found in [this repo](https://github.com/plawson/vm-mgmt).
 
 ## Nodes description
-The VMs are created on a bare-metal (2 NIC) server with two 12 core CPU, 256Gb of memory and a 2Tb SSD internal disk. The VM disks are located on a Synology 3615xs (4 NIC) with huit 8Tb disk in a RAID 6 volume group (39Tb space) mounted using ISCSI via DM-Multipath. The ISCSI target is configured with multi session so that all I/O are load balanced across the 6 NICs. All NICs are connected to a high speed Netgear switch.
+The VMs are created on a bare-metal (2 NIC) server with two 12 core CPU, 256Gb of memory and a 2Tb SSD internal drive. The VM disks are located on a Synology 3615xs (4 NIC) with huit 8Tb disk in a RAID 6 volume group (39Tb space) mounted using ISCSI via DM-Multipath. The ISCSI target is configured with multi session so that all I/O are load balanced across the 6 NICs. All NICs are connected to a high speed Netgear switch.
 
 | Role                    | Host     | Alias              | CPU# | Memory | Disk |
 |:------------------------|:---------|:-------------------|-----:|-------:|-----:|
