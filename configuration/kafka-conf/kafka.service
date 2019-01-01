@@ -1,0 +1,16 @@
+[Unit]
+Description=Apache Kafka server (broker)
+Documentation=http://kafka.apache.org/documentation.html
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+
+[Service]
+Type=simple
+User=ubuntu
+ExecStartPre=/bin/bash -c 'while [ $(/bin/nc -vz zookeeper 2181; echo $?) -ne 0 ]; do /usr/bin/sleep 5; done'
+TimeoutStartSec=300
+ExecStart=/home/ubuntu/kafka/bin/kafka-server-start.sh /home/ubuntu/kafka/config/server-lambda.properties
+ExecStop=/home/ubuntu/kafka/bin/kafka-server-stop.sh
+
+[Install]
+WantedBy=multi-user.target
