@@ -15,4 +15,4 @@ The VMs are created on a bare-metal (2 NIC) server with two 12 core CPUs, 256Gb 
 |Datanode/Node manager    |k8s-node07|datanode2/nodemgr2  | 4    | 15Gb   | 2Tb  |
 |Datanode/Node manager    |k8s-node08|datanode3/nodemgr3  | 4    | 15Gb   | 2Tb  |
 |Cassandra                |k8s-node09|cassandra           | 2    | 15Gb   | 2Tb  |
-|UI node                  |k8s-node10|uinode              | 1    | 15Gb   | 2Tb  |
+|[UI node](https://github.com/plawson/lambda-arch/tree/master/configuration/ui-conf)                  |k8s-node10|uinode              | 1    | 15Gb   | 2Tb  |
