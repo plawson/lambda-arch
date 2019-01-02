@@ -22,7 +22,8 @@ sudo chown ubuntu:ubuntu /data/kafka/logs
 echo "Testing Kafka configuration..."
 cd ${INSTALL_DIR}
 bin/kafka-server-start.sh -daemon config/server-lambda.properties
-sleep 5
+echo "Waiting 60 seconds for registration to complete..."
+sleep 60
 nc -vz localhost 9092
 if [[ $? -eq 1 ]]; then
 	echo "ERROR: Kafka configuration problem!"

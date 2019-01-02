@@ -18,5 +18,5 @@ $ ./setup-kafka.sh
 ```console
 $ ssh ubuntu@k8s-node04
 $ cd kafka
-$ bin/kafka-topics.sh --zookeeper zookeeper:2181 --create --topic tweets --replication-factor 1 --partitions 3
+$ bin/kafka-topics.sh --zookeeper zookeeper:2181/kafka --create --topic tweets --replication-factor 1 --partitions 3 --config cleanup.policy=delete
 ```
