@@ -1,0 +1,16 @@
+[Unit]
+Description=Confluent Schema Registry
+Documentation=https://docs.confluent.io/current/schema-registry/docs/index.html
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+
+[Service]
+Type=simple
+User=ubuntu
+ExecStartPre=/bin/bash -c 'while [ $(/bin/nc -vz kafka 9092; echo $?) -ne 0 ]; do /usr/bin/sleep 5; done'
+TimeoutStartSec=300
+ExecStart=/home/ubuntu/confluent/bin/schema-registry-start /home/ubuntu/confluent/etc/schema-registry/schema-registry-lambda.properties
+ExecStop=/home/ubuntu/confluent/bin/schema-registry-stop
+
+[Install]
+WantedBy=multi-user.target
