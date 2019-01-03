@@ -55,3 +55,23 @@ $ ./start-kafka-manager.sh
 ```
 
 The UI is at: [http://k8s-node10:9000](http://k8s-node10:9000)
+
+## Schema Registry UI
+This is the [Landoop](https://github.com/Landoop/schema-registry-ui).This is a web tool for the [confluentinc/schema-registry](https://github.com/confluentinc/schema-registry) in order to create / view / search / evolve / view history & configure Avro schemas of your Kafka cluster.
+
+Installation:
+```console
+$ cd lambda-arch/configuration/ui-conf
+$ scp -r schema-registry-ui ubuntu@k8s-node10:/home/ubuntu
+$ ssh ubuntu@k8s-node10
+$ docker pull landoop/schema-registry-ui
+```
+
+Run the UI:
+```console
+$ ssh ubuntu@k8s-node10
+$ cd schema-registry-ui
+$ ./start-schema-registry-ui.sh
+```
+
+The ui is at: [http://k8s-node10:8002](http://k8s-node10:8002)
