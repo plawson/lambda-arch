@@ -10,7 +10,7 @@ The VMs are created on a bare-metal (2 NIC) server with two 12 core CPUs, 256Gb 
 |Kafka Connect            |k8s-node02|connect             | 1    | 15Gb   | 2Tb  |
 |[Zookeeper](https://github.com/plawson/lambda-arch/tree/master/configuration/zookeeper-conf)                |k8s-node03|zookeeper           | 2    | 15Gb   | 2Tb  |
 |[Kafka](https://github.com/plawson/lambda-arch/tree/master/configuration/kafka-conf)                    |k8s-node04|kafka               | 2    | 15Gb   | 2Tb  |
-|[Namenode/Resource manager](#markdown-header-namenode-and-resource-manager)|k8s-node05|namenode/resourcemgr| 2    | 15Gb   | 2Tb  |
+|[Namenode/Resource manager](https://github.com/plawson/lambda-arch/blob/master/configuration/hadoop-conf/README.md#namenode-and-resource-manager)|k8s-node05|namenode/resourcemgr| 2    | 15Gb   | 2Tb  |
 |Datanode/Node manager    |k8s-node06|datanode1/nodemgr1  | 4    | 15Gb   | 2Tb  |
 |Datanode/Node manager    |k8s-node07|datanode2/nodemgr2  | 4    | 15Gb   | 2Tb  |
 |Datanode/Node manager    |k8s-node08|datanode3/nodemgr3  | 4    | 15Gb   | 2Tb  |
