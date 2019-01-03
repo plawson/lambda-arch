@@ -27,8 +27,31 @@ $ ssh ubuntu@k8s-node10
 $ docker pull landoop/kafka-topics-ui
 ```
 Run the UI:
+```console
 $ ssh ubuntu@k8s-node10
 $ cd kafka-topics-ui
 $ ./start-topics-ui.sh
+```
 
 The UI is at [http://k8s-node10:8001](http://k8s-node10:8001)
+
+## Kafka Manager
+A tool for managing [Apache Kafka](http://kafka.apache.org/). The docker image is available at [https://hub.docker.com/r/hlebalbau/kafka-manager/](https://hub.docker.com/r/hlebalbau/kafka-manager/).
+
+Installation
+```console
+$ cd lambda-arch/configuration/ui-conf
+$ scp -r kafka-manager ubuntu@k8s-node10:/home/ubuntu
+$ ssh ubuntu@k8s-node10
+$ cd kafka-manager
+$ docker pull hlebalbau/kafka-manager:stable
+```
+
+Run the UI:
+```console
+$ ssh ubuntu@k8s-node10
+$ cd kafka-manager
+$ ./start-kafka-manager.sh
+```
+
+The UI is at: [http://k8s-node10:9000](http://k8s-node10:9000)
