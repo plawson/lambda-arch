@@ -13,3 +13,22 @@ $ ssh ubuntu@k8s-node10
 $ cd zoonavigator
 $ docker-compose up -d
 ```
+
+The UI is at [http://k8s-node10:8000](http://k8s-node10:8000)
+
+## Kafka Topics UI
+This is the [Landoop](https://github.com/Landoop/kafka-topics-ui) distribution. Browse Kafka topics and understand what's happening on your cluster. Find topics / view topic metadata / browse topic data (kafka messages) / view topic configuration / download data. This is a web tool for the [confluentinc/kafka-rest proxy](https://github.com/confluentinc/kafka-rest).
+
+Intallation:
+```console
+$ cd lambda-arch/configuration/ui-conf
+$ scp -r kafka-topics-ui ubuntu@k8s-node10:/home/ubuntu
+$ ssh ubuntu@k8s-node10
+$ docker pull landoop/kafka-topics-ui
+```
+Run the UI:
+$ ssh ubuntu@k8s-node10
+$ cd kafka-topics-ui
+$ ./start-topics-ui.sh
+
+The UI is at [http://k8s-node10:8001](http://k8s-node10:8001)
