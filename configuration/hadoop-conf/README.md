@@ -9,14 +9,43 @@ This is a prototype cluster with no HA and no security configuration.
 |Datanode/Node manager    |k8s-node07|datanode2/nodemgr2  | 4    | 15Gb   | 2Tb  |
 |Datanode/Node manager    |k8s-node08|datanode3/nodemgr3  | 4    | 15Gb   | 2Tb  |
 
-## Namenode and Resource manager
-These instances are installed on the smae node for this prototype.
-
-Package download:
+## Datanode1 and Nodemanager1
 ```console
-$ cd lambda-arch/configuration
-$ scp -r hadoop-conf ubuntu@k8s-node05:/home/ubuntu
+$ cd lambda-arch/configuration/hadoop-conf
+$ scp -r slaves ubuntu@k8s-node06:/home/ubuntu
+$ ssh ubuntu@k8s-node06
+$ cd slaves
+$ ./setup-slave.sh
+```
+
+## Datanode2 and Nodemanager2
+```console
+$ cd lambda-arch/configuration/hadoop-conf
+$ scp -r slaves ubuntu@k8s-node07:/home/ubuntu
+$ ssh ubuntu@k8s-node07
+$ cd slaves
+$ ./setup-slave.sh
+```
+
+## Datanode3 and Nodemanager3
+```console
+$ cd lambda-arch/configuration/hadoop-conf
+$ scp -r slaves ubuntu@k8s-node08:/home/ubuntu
+$ ssh ubuntu@k8s-node08
+$ cd slaves
+$ ./setup-slave.sh
+```
+
+## Namenode and Resource manager
+```console
+$ cd lambda-arch/configuration/hadoop-conf
+$ scp -r master ubuntu@k8s-node05:/home/ubuntu
 $ ssh ubuntu@k8s-node05
-$ cd hadoop-conf
-$ ./setup-hadoop.sh
+$ ssh-keygen
+$ ssh-copy-id ubuntu@k8s-node05
+$ ssh-copy-id ubuntu@k8s-node06
+$ ssh-copy-id ubuntu@k8s-node07
+$ ssh-copy-id ubuntu@k8s-node08
+$ cd master
+$ ./setup-master.sh
 ```

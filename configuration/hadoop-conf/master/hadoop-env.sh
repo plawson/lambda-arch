@@ -22,7 +22,7 @@
 # remote nodes.
 
 JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-HADOOP_CONF_DIR=/home/ubuntu/hadoop-conf/hadoop/etc/hadoop
+HADOOP_CONF_DIR=/home/ubuntu/hadoop/etc/hadoop
 
 # The java implementation to use.
 export JAVA_HOME=${JAVA_HOME}
