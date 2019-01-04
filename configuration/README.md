@@ -11,7 +11,6 @@ The VMs are created on a bare-metal (2 NIC) server with two 12 core CPUs, 256Gb 
 |[Zookeeper](https://github.com/plawson/lambda-arch/tree/master/configuration/zookeeper-conf)                |k8s-node03|zookeeper           | 2    | 15Gb   | 2Tb  |
 |[Kafka](https://github.com/plawson/lambda-arch/tree/master/configuration/kafka-conf)                    |k8s-node04|kafka               | 2    | 15Gb   | 2Tb  |
 |[Namenode/Resource manager](https://github.com/plawson/lambda-arch/blob/master/configuration/hadoop-conf/README.md#namenode-and-resource-manager)|k8s-node05|namenode/resourcemgr| 2    | 15Gb   | 2Tb  |
-|[Spark](https://github.com/plawson/lambda-arch/blob/master/configuration/hadoop-conf/README.md#spark)|k8s-node05|N/A| N/A    | N/A   | N/A  |
 |[Datanode/Node manager](https://github.com/plawson/lambda-arch/blob/master/configuration/hadoop-conf/README.md#datanode1-and-nodemanager1)    |k8s-node06|datanode1/nodemgr1  | 4    | 15Gb   | 2Tb  |
 |[Datanode/Node manager](https://github.com/plawson/lambda-arch/blob/master/configuration/hadoop-conf/README.md#datanode2-and-nodemanager2)    |k8s-node07|datanode2/nodemgr2  | 4    | 15Gb   | 2Tb  |
 |[Datanode/Node manager](https://github.com/plawson/lambda-arch/blob/master/configuration/hadoop-conf/README.md#datanode3-and-nodemanager3)    |k8s-node08|datanode3/nodemgr3  | 4    | 15Gb   | 2Tb  |
