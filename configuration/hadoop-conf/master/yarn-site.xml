@@ -16,7 +16,7 @@
 
 <property>
   <name>yarn.resourcemanager.hostname</name>
-  <value>kube-node05</value>
+  <value>k8s-node05</value>
   <description>The hostname of the RM.</description>
 </property>
 

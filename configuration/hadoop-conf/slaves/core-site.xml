@@ -19,6 +19,6 @@
 <configuration>
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://kube-node05:9000</value>
+    <value>hdfs://k8s-node05:9000</value>
   </property>
 </configuration>
