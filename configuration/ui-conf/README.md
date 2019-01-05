@@ -75,3 +75,17 @@ $ ./start-schema-registry-ui.sh
 ```
 
 The ui is at: [http://k8s-node10:8002](http://k8s-node10:8002)
+
+## Kafka Connect UI
+This is the [Landoop kafka-connect-ui](https://github.com/Landoop/kafka-connect-ui).
+
+Run the ui:
+```console
+$ cd lambda-arch/configuration/ui-conf
+$ scp -r kafka-connect-ui ubuntu@k8s-node10:/home/ubuntu
+$ ssh ubuntu@k8s-node10
+$ cd kafka-connect-ui
+$ ./start-kafka-connect-ui.sh
+```
+
+The UI is at: [http://k8s-node10:8003](http://k8s-node10:8003)
