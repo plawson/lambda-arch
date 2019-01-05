@@ -3,6 +3,7 @@
 We'll use Confluent Platform Community packge 5.1.
 
 Installation:
+
 Fork the [kafka-connect-twitter](https://github.com/Eneco/kafka-connect-twitter) Eneco repositiry. Update the framwork version number in the pom.xml file to suit your environment. Create a lambda-arch/configuration/kafka-connect-conf/kafka-connect-twitter directory. Build the connector and copy the target/kafka-connect-twitter-0.1-jar-with-dependencies.jar to the lambda-arch/configuration/kafka-connect-conf/kafka-connect-twitter directory.
 ```console
 $ cd lambda-arch/configuration
