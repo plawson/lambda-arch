@@ -10,9 +10,11 @@
 # hdfs dfs -ls
 
 
-_CLIENT=$(kubectl get pods -l app=hdfs-client,release=my-hdfs -o name | cut -d/ -f 2)
-if [[ ! -z "$_CLIENT" ]]; then
-    kubectl exec $_CLIENT -- hdfs $*
-else
-    echo "ERROR: The HDFS client pod is not deployed in the k8s cluster"
-fi
+#_CLIENT=$(kubectl get pods -l app=hdfs-client,release=my-hdfs -o name | cut -d/ -f 2)
+#if [[ ! -z "$_CLIENT" ]]; then
+#    kubectl exec $_CLIENT -- hdfs $*
+#else
+#    echo "ERROR: The HDFS client pod is not deployed in the k8s cluster"
+#fi
+
+ssh ubuntu@k8s-node05 /home/ubuntu/hadoop/bin/hdfs $*
