@@ -2,7 +2,7 @@
 [Kefke Connect](http://kafka.apache.org/documentation/#connect) is a [Kafka](http://kafka.apache.org/) feature and framework that can be used for to implement deployable source and sink data injectors to and from Kafka. It is backed by a cluster allowing resiliency and scaling through failover and rebalance techniques. We will use the [Confluent Kafka Connect](https://docs.confluent.io/2.0.0/connect/index.html) implementation as it offer natural integration with the [Confluent Kafka Schema Registry](https://docs.confluent.io/current/schema-registry/docs/index.html) and much more.
 We'll use Confluent Platform Community packge 5.1.
 
-Installation:
+## Installation
 
 Fork the [kafka-connect-twitter](https://github.com/Eneco/kafka-connect-twitter) Eneco repository. Update the framework version number in the pom.xml file to suit your environment. Create a lambda-arch/configuration/kafka-connect-conf/kafka-connect-twitter directory. Build the connector and copy the target/kafka-connect-twitter-0.1-jar-with-dependencies.jar to the lambda-arch/configuration/kafka-connect-conf/kafka-connect-twitter directory.
 ```console
@@ -11,4 +11,34 @@ $ scp -r kafka-connect-conf ubuntu@k8s-node02:/home/ubuntu
 $ ssh ubuntu@k8s-node02
 $ cd kafka-connect-conf
 $ ./setup-kafka-connect.sh
+```
+## Create the connectors
+Connectors can be created using the [kafka-connect-ui](https://github.com/plawson/lambda-arch/tree/master/configuration/ui-conf#kafka-connect-ui). However, the [Connect REST API](http://kafka.apache.org/documentation/#connect_rest) is better suited to automate connectors management. See the [Kafka Connect REST Interface](https://docs.confluent.io/current/connect/references/restapi.html) and [Managing Connectors](https://docs.confluent.io/3.2.0/connect/managing.html#common-rest-examples).
+
+### Twitter source connector
+In the below exerpt, replace (secret) with you Twitter keys.
+```console
+curl -XPOST -H "Content-Type: application/json" http://k8s-node02:8083/connectors -d '{
+  "name": "LambdaTwitter",
+  "config": {
+    "connector.class": "com.eneco.trading.kafka.connect.twitter.TwitterSourceConnector",
+    "twitter.token": "(secret)",
+    "twitter.secret": "(secret)",
+    "twitter.consumerkey": "(secret)",
+    "twitter.consumersecret": "(secret)",
+    "tasks.max": "1",
+    "stream.type": "sample",
+    "batch.size": "100",
+    "language": "en",
+    "value.converter.schema.registry.url": "http://k8s-node01:8081",
+    "value.converter.schemas.enable": "true",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter.schema.registry.url": "http://k8s-node01:8081",
+    "key.converter": "io.confluent.connect.avro.AvroConverter",
+    "name": "LambdaTwitter",
+    "topics": "tweets",
+    "twitter.app.name": "KafkaConnectTwitterSource",
+    "batch.timeout": "0.1"
+  }
+}'
 ```
