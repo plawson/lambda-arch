@@ -18,7 +18,7 @@ Connectors can be created using the [kafka-connect-ui](https://github.com/plawso
 ### Twitter source connector
 In the below exerpt, replace (secret) with you Twitter keys.
 ```console
-curl -XPOST -H "Content-Type: application/json" http://k8s-node02:8083/connectors -d '{
+$ curl -XPOST -H "Content-Type: application/json" http://k8s-node02:8083/connectors -d '{
   "name": "LambdaTwitter",
   "config": {
     "connector.class": "com.eneco.trading.kafka.connect.twitter.TwitterSourceConnector",
@@ -39,6 +39,27 @@ curl -XPOST -H "Content-Type: application/json" http://k8s-node02:8083/connector
     "topics": "tweets",
     "twitter.app.name": "KafkaConnectTwitterSource",
     "batch.timeout": "0.1"
+  }
+}'
+```
+### HDFS sink connector
+```console
+$ curl -XPOST -H "Content-Type: application/json" http://k8s-node02:8083/connectors -d '{
+  "name": "LambdaHDFSSink",
+  "config": {
+    "connector.class": "io.confluent.connect.hdfs.HdfsSinkConnector",
+    "tasks.max": "3",
+    "value.converter.schema.registry.url": "http://k8s-node01:8081",
+    "value.converter.schemas.enable": "true",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter.schema.registry.url": "http://k8s-node01:8081",
+    "key.converter": "io.confluent.connect.avro.AvroConverter",
+    "name": "LambdaHDFSSink",
+    "topics": "tweets",
+    "flush.size": "3",
+    "format.class": "io.confluent.connect.hdfs.avro.AvroFormat",
+    "schema.cache.size": 1000,
+    "hdfs.url": "hdfs://k8s-node05:9000"
   }
 }'
 ```
