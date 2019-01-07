@@ -1,0 +1,3 @@
+#!/bin/bash
+
+java -jar $LBDARCH_HOME/tools/avro/avro-tools-1.8.2.jar $*

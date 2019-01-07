@@ -12,6 +12,7 @@
 
 # Package Files #
 *.jar
+!tools/avro/avro-tools-1.8.2.jar
 *.war
 *.nar
 *.ear
