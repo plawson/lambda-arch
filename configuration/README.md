@@ -14,7 +14,7 @@ The VMs are created on a bare-metal (2 NIC) server with two 12 core CPUs, 256Gb 
 |[Datanode/Node manager](https://github.com/plawson/lambda-arch/blob/master/configuration/hadoop-conf/README.md#datanode1-and-nodemanager1)    |k8s-node06|datanode1/nodemgr1  | 4    | 15Gb   | 2Tb  |
 |[Datanode/Node manager](https://github.com/plawson/lambda-arch/blob/master/configuration/hadoop-conf/README.md#datanode2-and-nodemanager2)    |k8s-node07|datanode2/nodemgr2  | 4    | 15Gb   | 2Tb  |
 |[Datanode/Node manager](https://github.com/plawson/lambda-arch/blob/master/configuration/hadoop-conf/README.md#datanode3-and-nodemanager3)    |k8s-node08|datanode3/nodemgr3  | 4    | 15Gb   | 2Tb  |
-|Cassandra                |k8s-node09|cassandra           | 2    | 15Gb   | 2Tb  |
+|[Cassandra](https://github.com/plawson/lambda-arch/blob/master/configuration/cassandra-conf)                |k8s-node09|cassandra           | 2    | 15Gb   | 2Tb  |
 |[UI node](https://github.com/plawson/lambda-arch/tree/master/configuration/ui-conf)                  |k8s-node10|uinode              | 1    | 15Gb   | 2Tb  |
 
 ## Spark
