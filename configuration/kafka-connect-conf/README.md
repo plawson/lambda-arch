@@ -56,7 +56,7 @@ $ curl -XPOST -H "Content-Type: application/json" http://k8s-node02:8083/connect
     "key.converter": "io.confluent.connect.avro.AvroConverter",
     "name": "LambdaHDFSSink",
     "topics": "tweets",
-    "flush.size": "3",
+    "flush.size": "100000",
     "format.class": "io.confluent.connect.hdfs.avro.AvroFormat",
     "schema.cache.size": 1000,
     "hdfs.url": "hdfs://k8s-node05:9000"
