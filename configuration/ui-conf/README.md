@@ -19,14 +19,14 @@ The UI is at [http://k8s-node10:8000](http://k8s-node10:8000)
 ## Kafka Topics UI
 This is the [Landoop](https://github.com/Landoop/kafka-topics-ui) distribution. Browse Kafka topics and understand what's happening on your cluster. Find topics / view topic metadata / browse topic data (kafka messages) / view topic configuration / download data. This is a web tool for the [confluentinc/kafka-rest proxy](https://github.com/confluentinc/kafka-rest).
 
-Intallation:
+### Intallation
 ```console
 $ cd lambda-arch/configuration/ui-conf
 $ scp -r kafka-topics-ui ubuntu@k8s-node10:/home/ubuntu
 $ ssh ubuntu@k8s-node10
 $ docker pull landoop/kafka-topics-ui
 ```
-Run the UI:
+### Run the UI
 ```console
 $ ssh ubuntu@k8s-node10
 $ cd kafka-topics-ui
@@ -38,7 +38,7 @@ The UI is at [http://k8s-node10:8001](http://k8s-node10:8001)
 ## Kafka Manager
 A tool for managing [Apache Kafka](http://kafka.apache.org/). The docker image is available at [https://hub.docker.com/r/hlebalbau/kafka-manager/](https://hub.docker.com/r/hlebalbau/kafka-manager/).
 
-Installation
+### Installation
 ```console
 $ cd lambda-arch/configuration/ui-conf
 $ scp -r kafka-manager ubuntu@k8s-node10:/home/ubuntu
@@ -47,7 +47,7 @@ $ cd kafka-manager
 $ docker pull hlebalbau/kafka-manager:stable
 ```
 
-Run the UI:
+### Run the UI
 ```console
 $ ssh ubuntu@k8s-node10
 $ cd kafka-manager
@@ -59,7 +59,7 @@ The UI is at: [http://k8s-node10:9000](http://k8s-node10:9000)
 ## Schema Registry UI
 This is the [Landoop](https://github.com/Landoop/schema-registry-ui).This is a web tool for the [confluentinc/schema-registry](https://github.com/confluentinc/schema-registry) in order to create / view / search / evolve / view history & configure Avro schemas of your Kafka cluster.
 
-Installation:
+### Installation
 ```console
 $ cd lambda-arch/configuration/ui-conf
 $ scp -r schema-registry-ui ubuntu@k8s-node10:/home/ubuntu
@@ -67,7 +67,7 @@ $ ssh ubuntu@k8s-node10
 $ docker pull landoop/schema-registry-ui
 ```
 
-Run the UI:
+### Run the UI
 ```console
 $ ssh ubuntu@k8s-node10
 $ cd schema-registry-ui
@@ -79,7 +79,7 @@ The ui is at: [http://k8s-node10:8002](http://k8s-node10:8002)
 ## Kafka Connect UI
 This is the [Landoop kafka-connect-ui](https://github.com/Landoop/kafka-connect-ui).
 
-Run the ui:
+### Run the ui
 ```console
 $ cd lambda-arch/configuration/ui-conf
 $ scp -r kafka-connect-ui ubuntu@k8s-node10:/home/ubuntu
