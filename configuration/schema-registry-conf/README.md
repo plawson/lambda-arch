@@ -5,7 +5,7 @@ Schema Registry installation and configuration.
 This is a single instance setup based on [Confluent Platform 5.1](https://docs.confluent.io/current/schema-registry/docs/installation.html).
 
 ## Installation and configuration
-Schema Registry:
+### Schema Registry
 ```console
 $ cd lambda-arch/configuration
 $ scp -r schema-registry-conf ubuntu@k8s-node01:/home/ubuntu
@@ -14,7 +14,7 @@ $ cd schema-registry-conf
 $ ./setup-registry.sh
 ```
 
-REST Proxy:
+### REST Proxy
 ```console
 $ ssh ubuntu@k8s-node01
 $ cd schema-registry-conf
