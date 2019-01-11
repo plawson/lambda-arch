@@ -19,13 +19,14 @@ object TwitterBatchLayer {
 
     // Schema Registry
     val schemaRegistry = new CachedSchemaRegistryClient(lambdaConf.schemaRegistry, 10)
-    val schema = schemaRegistry.getLatestSchemaMetadata("tweets").getSchema
+    val schema = schemaRegistry.getLatestSchemaMetadata("tweets-value").getSchema
 
     // Initialize an input DF
     val inpufDF = spark
       .read
-      .format("com.databricks.spark.avro")
+      .format("avro")
       .option("avroSchema", schema)
       .load(lambdaConf.hdfsPath)
+      .show()
   }
 }
