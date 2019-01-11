@@ -4,6 +4,8 @@ import com.plawson.lambda.config.Settings
 import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient
 import com.plawson.lambda.utils.SparkUtils.{getSQLContext, getSparkContext, getSparkSession}
 
+import org.apache.spark.sql.functions._
+
 /**
   * Created by Philippe Lawson on 10/01/2019
   */
@@ -21,11 +23,22 @@ object TwitterBatchLayer {
     val schema = schemaRegistry.getLatestSchemaMetadata("tweets-value").getSchema
 
     // Initialize an input DF
-    val inpufDF = spark
+    val inputDF = spark
       .read
       .format("avro")
       .option("avroSchema", schema)
       .load(lambdaConf.hdfsPath)
-      .show()
+      .filter(size(col("entities.hashtags")) > 0)
+      .select(col("created_at"), explode(col("entities.hashtags.text")).as("hashtag"))
+      .persist
+
+    val numberRows = inputDF.count()
+
+    inputDF.show
+
+    println(numberRows)
+
+    inputDF.printSchema
+
   }
 }
