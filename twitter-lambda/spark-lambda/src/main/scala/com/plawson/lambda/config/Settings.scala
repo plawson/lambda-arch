@@ -1,4 +1,4 @@
-package config
+package com.plawson.lambda.config
 
 import com.typesafe.config.ConfigFactory
 

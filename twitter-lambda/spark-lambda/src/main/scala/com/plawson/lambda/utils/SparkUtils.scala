@@ -1,8 +1,8 @@
-package utils
+package com.plawson.lambda.utils
 
 import java.lang.management.ManagementFactory
 
-import config.Settings
+import com.plawson.lambda.config.Settings
 import org.apache.spark.sql.{SQLContext, SparkSession}
 import org.apache.spark.{SparkConf, SparkContext}
 

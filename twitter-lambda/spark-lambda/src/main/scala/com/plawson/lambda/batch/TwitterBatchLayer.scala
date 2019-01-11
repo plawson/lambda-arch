@@ -1,9 +1,8 @@
-package batch
+package com.plawson.lambda.batch
 
-import config.Settings
-import utils.SparkUtils._
-
+import com.plawson.lambda.config.Settings
 import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient
+import com.plawson.lambda.utils.SparkUtils.{getSQLContext, getSparkContext, getSparkSession}
 
 /**
   * Created by Philippe Lawson on 10/01/2019
