@@ -52,3 +52,12 @@ echo "Starting YARN service..."
 sudo systemctl start yarn
 sleep 10
 ${INSTALL_DIR}/bin/yarn node -list -all
+
+echo "Creating hdfs directories..."
+cd ${INSTALL_DIR}
+bin/hdfs dfs -mkdir /user
+bin/hdfs dfs -chmod 777 /user
+bin/hdfs dfs -mkdir /spark-logs
+bin/hdfs dfs -chmod 777 /spark-logs
+bin/hdfs dfs -mkdir -p /spark/checkpoint
+bin/hdfs dfs -chmod 777 /spark/checkpoint
