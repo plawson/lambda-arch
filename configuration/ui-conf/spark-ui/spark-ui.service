@@ -1,0 +1,20 @@
+[Unit]
+Description=Spark UI
+After=syslog.target network.target remote-fs.target nss-lookup.target network-online.target
+Requires=network-online.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+Type=forking
+ExecStartPre=/bin/bash -c 'while [ $(/bin/nc -vz namenode 9000; echo $?) -ne 0 ]; do /usr/bin/sleep 5; done'
+ExecStart=/home/ubuntu/spark-conf/spark/sbin/start-history-server.sh
+ExecStop=/home/ubuntu/spark-conf/spark/sbin/stop-history-server.sh
+WorkingDirectory=/home/ubuntu/spark-conf
+Environment=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+TimeoutStartSec=300
+Restart=on-failure
+PIDFile=/tmp/spark-ubuntu-org.apache.spark.deploy.history.HistoryServer-1.pid
+
+[Install]
+WantedBy=multi-user.target

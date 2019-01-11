@@ -89,3 +89,27 @@ $ ./start-kafka-connect-ui.sh
 ```
 
 The UI is at: [http://k8s-node10:8003](http://k8s-node10:8003)
+
+## Spark UI
+The [Spark History Server](https://spark.apache.org/docs/latest/monitoring.html) is enabled.
+
+### Installation
+```console
+$ cd lambda-arch/configuration
+$ scp -r spark-conf ubuntu@k8s-node10:/home/ubuntu
+$ ssh ubuntu@k8s-node10
+$ cd spark-conf
+$ ./setup-spark.sh
+$ exit
+```
+
+## Configuration
+```console
+$ cd lambda-arch/configuration/ui-conf
+$ scp -r spark-ui ubuntu@k8s-node10:/home/ubuntu
+$ ssh ubuntu@k8s-node10
+$ cd spark-ui
+$ ./setup-spark-ui.sh
+```
+
+The UI is at: [http://k8s-node10:18080](http://k8s-node10:18080/)
