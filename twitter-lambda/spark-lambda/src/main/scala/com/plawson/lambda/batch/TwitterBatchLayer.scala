@@ -45,8 +45,6 @@ object TwitterBatchLayer {
     inputDF.unpersist
 
     hashtagsCountByHour
-
-    hashtagsCountByHour
       .write
       .mode(SaveMode.Append)
       .format("org.apache.spark.sql.cassandra")
