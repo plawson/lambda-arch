@@ -3,6 +3,7 @@ package com.plawson.lambda.batch
 import com.plawson.lambda.config.Settings
 import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient
 import com.plawson.lambda.utils.SparkUtils.{getSQLContext, getSparkContext, getSparkSession}
+import org.apache.spark.sql.SaveMode
 
 import org.apache.spark.sql.functions._
 
@@ -41,8 +42,13 @@ object TwitterBatchLayer {
         |FROM hashtags
         |GROUP BY date_hour, hashtag""".stripMargin).persist
 
+    inputDF.unpersist
+
+    hashtagsCountByHour
+
     hashtagsCountByHour
       .write
+      .mode(SaveMode.Append)
       .format("org.apache.spark.sql.cassandra")
       .options(Map( "keyspace" -> "serving_layer", "table" -> "serving_view"))
       .save()
