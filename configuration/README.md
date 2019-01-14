@@ -1,5 +1,5 @@
 # Clusters Setup
-This is a prototype environment based on single and multi nodes clusters. The nodes are VirtualBoxe VMs managed with my ISO and VM customization scripts found in the [vm-mgmt](https://github.com/plawson/vm-mgmt) repo.
+This is a prototype environment based on single and multi nodes clusters. The nodes are VirtualBox VMs managed with my ISO and VM customization scripts found in the [vm-mgmt](https://github.com/plawson/vm-mgmt) repo.
 
 ## Nodes description
 The VMs are created on a bare-metal (2 NIC) server with two 12 core CPUs, 256Gb of memory and a 2Tb SSD internal drive. The VM disks are located on a NAS (4 NIC) with eight 8Tb disks in a RAID 6 volume group (39Tb space) mounted using ISCSI via DM-Multipath. The ISCSI LUN is configured with multi session enabled so that all I/O are load balanced across the 6 NICs. All 6 NICs are connected to a high speed Netgear switch.
