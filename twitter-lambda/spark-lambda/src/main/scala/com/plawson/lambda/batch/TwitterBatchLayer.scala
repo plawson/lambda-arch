@@ -29,21 +29,22 @@ object TwitterBatchLayer {
       .option("avroSchema", schema)
       .load(lambdaConf.hdfsPath)
       .filter(size(col("entities.hashtags")) > 0)
-      .select(unix_timestamp(date_trunc("hour", to_timestamp(col("created_at"), "yyyy-MM-dd'T'HH:mm:ss.000Z")))
-        .as("timestamp_hour"), explode(col("entities.hashtags.text")).as("hashtag"))
+      .select((unix_timestamp(date_trunc("hour", to_timestamp(col("created_at"), "yyyy-MM-dd'T'HH:mm:ss.SSSZ"))) * 1000)
+        .as("date_hour"), explode(col("entities.hashtags.text")).as("hashtag"))
       .persist
 
     inputDF.createTempView("hashtags")
 
-    val hashtagsByHour = sqlContext.sql(
+    val hashtagsCountByHour = sqlContext.sql(
       """SELECT
-        |timestamp_hour, hashtag, count(hashtag) as count
+        |date_hour, hashtag, count(hashtag) as count
         |FROM hashtags
-        |GROUP BY timestamp_hour, hashtag
-        |ORDER BY count DESC""".stripMargin).persist
+        |GROUP BY date_hour, hashtag""".stripMargin).persist
 
-    hashtagsByHour.show
-
-
+    hashtagsCountByHour
+      .write
+      .format("org.apache.spark.sql.cassandra")
+      .options(Map( "keyspace" -> "serving_layer", "table" -> "serving_view"))
+      .save()
   }
 }

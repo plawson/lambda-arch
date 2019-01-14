@@ -23,7 +23,7 @@ object SparkUtils {
     // Get the Spark Config
     val conf = new SparkConf()
       .setAppName(appName)
-      .set("spark.casandra.connection.host", lambdaConf.cassandraHosts)
+      .set("spark.cassandra.connection.host", lambdaConf.cassandraHosts)
 
     if (isIDE) {
       System.setProperty("hadoop.home.dir", "C:\\work\\dev\\pluralsight\\Libraries\\WinUtils")
