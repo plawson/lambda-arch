@@ -20,6 +20,7 @@ cp ${SETUP_DIR}/slaves ${INSTALL_DIR}/etc/hadoop
 cp ${SETUP_DIR}/hadoop-env.sh ${INSTALL_DIR}/etc/hadoop
 cp ${SETUP_DIR}/yarn-site.xml ${INSTALL_DIR}/etc/hadoop
 cp ${SETUP_DIR}/hdfs-site.xml ${INSTALL_DIR}/etc/hadoop
+cp ${SETUP_DIR}/capacity-scheduler.xml ${INSTALL_DIR}/etc/hadoop
 
 echo "Creating Namenode data directory..."
 sudo mkdir -p /data/hdfs
