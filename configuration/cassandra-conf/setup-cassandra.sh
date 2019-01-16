@@ -27,3 +27,4 @@ sudo systemctl status cassandra
 
 echo "Creating Cassandra's application Keyspaces and Tables..."
 cqlsh -f ${SETUP_DIR}/serving_layer_view.cql
+cqlsh -f ${SETUP_DIR}/speed_layer_view.cql
