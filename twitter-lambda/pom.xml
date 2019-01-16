@@ -14,7 +14,7 @@
 
     <properties>
         <spark.version>2.4.0</spark.version>
-        <kafka.clients.version>2.1.0</kafka.clients.version>
+        <!-- kafka.clients.version>2.1.0</kafka.clients.version -->
         <avro.version>1.8.2</avro.version>
         <spark-cassandra-connector.version>2.4.0</spark-cassandra-connector.version>
         <cassandra-driver-core.version>3.6.0</cassandra-driver-core.version>
@@ -48,17 +48,17 @@
             <version>${cassandra-driver-core.version}</version>
         </dependency>
 
-        <dependency>
+        <!-- dependency>
             <groupId>com.github.nscala-time</groupId>
             <artifactId>nscala-time_2.11</artifactId>
             <version>${nscala-time.version}</version>
-        </dependency>
+        </dependency -->
 
-        <dependency>
+        <!-- dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>${kafka.clients.version}</version>
-        </dependency>
+        </dependency -->
 
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -73,11 +73,11 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
+        <!-- dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.11</artifactId>
             <version>${kafka.clients.version}</version>
-        </dependency>
+        </dependency -->
 
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -99,11 +99,11 @@
             <version>${spark.version}</version>
         </dependency>
 
-        <dependency>
+        <!-- dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming-kafka-0-10-assembly_2.11</artifactId>
             <version>${spark.version}</version>
-        </dependency>
+        </dependency -->
 
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -126,6 +126,12 @@
         <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>kafka-schema-registry-client</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
             <version>3.3.1</version>
         </dependency>
     </dependencies>
