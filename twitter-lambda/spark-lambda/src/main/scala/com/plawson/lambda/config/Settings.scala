@@ -15,8 +15,7 @@ object Settings {
     lazy val hdfsPath: String = appConfiguration.getString("hdfs_path")
     lazy val schemaRegistry: String = appConfiguration.getString("schema_registry")
     lazy val cassandraHosts: String = appConfiguration.getString("cassandra_host")
-    lazy val devCheckpoint: String = appConfiguration.getString("dev_checkpoint")
-    lazy val prodCheckpoint: String = appConfiguration.getString("prod_checkpoint")
+    lazy val checkpoint: String = appConfiguration.getString("checkpoint")
     lazy val brokers: String = appConfiguration.getString("brokers")
     lazy val groupId: String = appConfiguration.getString("group_id")
   }

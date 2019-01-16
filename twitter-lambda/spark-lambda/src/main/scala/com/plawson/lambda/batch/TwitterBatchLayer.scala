@@ -1,10 +1,9 @@
 package com.plawson.lambda.batch
 
 import com.plawson.lambda.config.Settings
-import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient
 import com.plawson.lambda.utils.SparkUtils.{getSQLContext, getSparkContext, getSparkSession}
+import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient
 import org.apache.spark.sql.SaveMode
-
 import org.apache.spark.sql.functions._
 
 /**
@@ -34,12 +33,12 @@ object TwitterBatchLayer {
         .as("date_hour"), explode(col("entities.hashtags.text")).as("hashtag"))
       .persist
 
-    inputDF.createTempView("hashtags")
+    inputDF.createOrReplaceTempView("batch_hashtags")
 
     val hashtagsCountByHour = sqlContext.sql(
       """SELECT
         |date_hour, hashtag, count(hashtag) as count
-        |FROM hashtags
+        |FROM batch_hashtags
         |GROUP BY date_hour, hashtag""".stripMargin).persist
 
     inputDF.unpersist

@@ -3,15 +3,15 @@ package com.plawson.lambda.speed
 
 import com.plawson.lambda.config.Settings
 import com.plawson.lambda.utils.SparkUtils._
-import org.apache.spark.SparkContext
-import org.apache.spark.streaming.kafka010.KafkaUtils
-import org.apache.spark.streaming.{Duration, Minutes, Seconds, StreamingContext}
 import io.confluent.kafka.serializers.KafkaAvroDeserializer
 import org.apache.kafka.common.serialization.StringDeserializer
+import org.apache.spark.SparkContext
 import org.apache.spark.sql.SaveMode
 import org.apache.spark.sql.functions._
-import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
 import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
+import org.apache.spark.streaming.kafka010.KafkaUtils
+import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
+import org.apache.spark.streaming.{Duration, Minutes, Seconds, StreamingContext}
 
 
 /**
@@ -51,12 +51,12 @@ object TwitterSpeedLayer {
           .select((unix_timestamp(date_trunc("hour", to_timestamp(col("created_at"), "yyyy-MM-dd'T'HH:mm:ss.SSSZ"))) * 1000)
             .as("date_hour"), explode(col("entities.hashtags.text")).as("hashtag"))
 
-        df.createTempView("hashtags")
+        df.createOrReplaceTempView("speed_hashtags")
 
         val hashtagsCountByHourView = sqlContext.sql(
           """SELECT
             |date_hour, hashtag, count(hashtag) as count
-            |FROM hashtags
+            |FROM speed_hashtags
             |GROUP BY date_hour, hashtag""".stripMargin)
 
         hashtagsCountByHourView
