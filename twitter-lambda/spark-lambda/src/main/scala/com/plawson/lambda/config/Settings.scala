@@ -8,14 +8,16 @@ import com.typesafe.config.ConfigFactory
 object Settings {
   private val config = ConfigFactory.load()
 
-  object AppConfiguretion {
-    private val appConfiguretion = config.getConfig("lambdatwitter")
+  object AppConfiguration {
+    private val appConfiguration = config.getConfig("lambdatwitter")
 
-    lazy val kafkaTopic: String = appConfiguretion.getString("kafka_topic")
-    lazy val hdfsPath: String = appConfiguretion.getString("hdfs_path")
-    lazy val schemaRegistry: String = appConfiguretion.getString("schema_registry")
-    lazy val cassandraHosts: String = appConfiguretion.getString("cassandra_host")
-    lazy val devCheckpoint: String = appConfiguretion.getString("dev_checkpoint")
-    lazy val prodCheckpoint: String = appConfiguretion.getString("prod_checkpoint")
+    lazy val kafkaTopic: String = appConfiguration.getString("kafka_topic")
+    lazy val hdfsPath: String = appConfiguration.getString("hdfs_path")
+    lazy val schemaRegistry: String = appConfiguration.getString("schema_registry")
+    lazy val cassandraHosts: String = appConfiguration.getString("cassandra_host")
+    lazy val devCheckpoint: String = appConfiguration.getString("dev_checkpoint")
+    lazy val prodCheckpoint: String = appConfiguration.getString("prod_checkpoint")
+    lazy val brokers: String = appConfiguration.getString("brokers")
+    lazy val groupId: String = appConfiguration.getString("group_id")
   }
 }

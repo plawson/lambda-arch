@@ -14,10 +14,10 @@ object TwitterBatchLayer {
   def main(args: Array[String]): Unit = {
 
     // Spark Context
-    val sc = getSparkContext("Twitter Lambda")
+    val sc = getSparkContext("Twitter Batch Layer")
     val sqlContext = getSQLContext(sc)
     val spark = getSparkSession(sc)
-    val lambdaConf = Settings.AppConfiguretion
+    val lambdaConf = Settings.AppConfiguration
 
     // Schema Registry
     val schemaRegistry = new CachedSchemaRegistryClient(lambdaConf.schemaRegistry, 10)
