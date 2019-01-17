@@ -13,3 +13,8 @@ CREATE TABLE serving_view (
   PRIMARY KEY (date_hour, count)
 ) WITH CLUSTERING ORDER BY (count DESC)
   AND comment = 'Serving layer view';
+
+-- Create serving_last_date_hour table
+CREATE TABLE serving_last_date_hour (
+  date_hour timestamp PRIMARY KEY
+) WITH comment = 'Last date_hour from bacth run';
