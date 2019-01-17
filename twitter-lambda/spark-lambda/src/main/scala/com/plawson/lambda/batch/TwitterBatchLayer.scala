@@ -43,11 +43,24 @@ object TwitterBatchLayer {
 
     inputDF.unpersist
 
+    val lastDataHour = sqlContext.sql(
+      """SELECT
+        |max(date_hour) as date_hour
+        |FROM batch_hashtags
+      """.stripMargin)
+
     hashtagsCountByHour
       .write
       .mode(SaveMode.Append)
       .format("org.apache.spark.sql.cassandra")
       .options(Map( "keyspace" -> "serving_layer", "table" -> "serving_view"))
+      .save()
+
+    lastDataHour
+      .write
+      .mode(SaveMode.Append)
+      .format("org.apache.spark.sql.cassandra")
+      .options(Map("keyspace" -> "serving_layer", "table" -> "serving_last_date_hour"))
       .save()
   }
 }
