@@ -4,8 +4,8 @@
 ## Installation
 ```console
 $ cd lambda-arch/configuration
-$ scp -r oozie-conf ubuntu@k8s-nodeO3:/home/ubuntu
-$ ssh ubuntu@k8s-node03
+$ scp -r oozie-conf ubuntu@k8s-nodeO5:/home/ubuntu
+$ ssh ubuntu@k8s-node05
 $ cd oozie-conf
 $ ./setup-oozie.sh
 ```
