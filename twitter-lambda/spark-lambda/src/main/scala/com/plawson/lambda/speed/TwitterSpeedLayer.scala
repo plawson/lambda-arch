@@ -42,11 +42,13 @@ object TwitterSpeedLayer {
         "value.deserializer" -> classOf[KafkaAvroDeserializer]
       )
 
+      import sqlContext.implicits._
+
       val topics = Array(topic)
       val records = KafkaUtils.createDirectStream[String, Object](ssc, PreferConsistent, Subscribe[String, Object](topics, kafkaParams))
       /*val tweets =*/ records.map(r => r.value.toString)
         .window(Minutes(60), Minutes(60)).foreachRDD(rdd => {
-        val df = spark.read.json(rdd)
+        val df = spark.read.json(rdd.toDS)
           .filter(size(col("entities.hashtags")) > 0)
           .select((unix_timestamp(date_trunc("hour", to_timestamp(col("created_at"), "yyyy-MM-dd'T'HH:mm:ss.SSSZ"))) * 1000)
             .as("date_hour"), explode(col("entities.hashtags.text")).as("hashtag"))
