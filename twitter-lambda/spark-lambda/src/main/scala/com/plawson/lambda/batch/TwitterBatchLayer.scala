@@ -44,7 +44,7 @@ object TwitterBatchLayer {
     inputDF.unpersist
 
     val lastDataHour = sqlContext.sql(
-      """SELECT
+      """SELECT 'latest' as id,
         |max(date_hour) as date_hour
         |FROM batch_hashtags
       """.stripMargin)
