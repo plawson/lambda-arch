@@ -16,5 +16,6 @@ CREATE TABLE serving_view (
 
 -- Create serving_last_date_hour table
 CREATE TABLE serving_last_date_hour (
-  date_hour timestamp PRIMARY KEY
+  id varchar PRIMARY KEY,
+  date_hour timestamp
 ) WITH comment = 'Last date_hour from bacth run';
