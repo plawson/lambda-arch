@@ -10,7 +10,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   */
 object SparkUtils {
 
-  def getSparkContext(appName: String): SparkContext = {
+  def getSparkContext(appName: String, isBatch: Boolean = false): SparkContext = {
 
     // Configuration
     val lambdaConf = Settings.AppConfiguration
@@ -26,7 +26,11 @@ object SparkUtils {
       .registerKryoClasses(Array(classOf[org.apache.avro.generic.GenericData.Record]))
 
     val sc = SparkContext.getOrCreate(conf)
-    sc.setCheckpointDir(lambdaConf.checkpoint)
+    if (isBatch) {
+      sc.setCheckpointDir(lambdaConf.checkpoint + "/batch")
+    } else {
+      sc.setCheckpointDir(lambdaConf.checkpoint + "/speed")
+    }
     sc
   }
 

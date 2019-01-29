@@ -13,7 +13,7 @@ object TwitterBatchLayer {
   def main(args: Array[String]): Unit = {
 
     // Spark Context
-    val sc = getSparkContext("Twitter Batch Layer")
+    val sc = getSparkContext("Twitter Batch Layer", isBatch = true)
     val sqlContext = getSQLContext(sc)
     val spark = getSparkSession(sc)
     val lambdaConf = Settings.AppConfiguration
@@ -53,7 +53,7 @@ object TwitterBatchLayer {
       .write
       .mode(SaveMode.Append)
       .format("org.apache.spark.sql.cassandra")
-      .options(Map( "keyspace" -> "serving_layer", "table" -> "serving_view"))
+      .options(Map( "keyspace" -> "serving_layer", "table" -> "serving_table"))
       .save()
 
     lastDataHour
