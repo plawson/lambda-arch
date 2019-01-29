@@ -60,5 +60,7 @@ bin/hdfs dfs -mkdir /user
 bin/hdfs dfs -chmod 777 /user
 bin/hdfs dfs -mkdir /spark-logs
 bin/hdfs dfs -chmod 777 /spark-logs
-bin/hdfs dfs -mkdir -p /spark/checkpoint
-bin/hdfs dfs -chmod 777 /spark/checkpoint
+bin/hdfs dfs -mkdir -p /spark/checkpoint/batch
+bin/hdfs dfs -chmod 777 /spark/checkpoint/batch
+bin/hdfs dfs -mkdir -p /spark/checkpoint/speed
+bin/hdfs dfs -chmod 777 /spark/checkpoint/speed
