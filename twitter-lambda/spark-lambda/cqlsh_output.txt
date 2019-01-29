@@ -1,0 +1,65 @@
+
+cqlsh> select * from serving_layer.serving_view where date_hour = '2019-01-29 00:00:00.000' limit 10;
+
+ date_hour                       | count | hashtag
+---------------------------------+-------+----------------------
+ 2019-01-28 23:00:00.000000+0000 |   242 |         iHeartAwards
+ 2019-01-28 23:00:00.000000+0000 |    57 |     BestSoloBreakout
+ 2019-01-28 23:00:00.000000+0000 |    45 |            ToyStory4
+ 2019-01-28 23:00:00.000000+0000 |    44 |      ArtWithTaehyung
+ 2019-01-28 23:00:00.000000+0000 |    41 |       LaurenJauregui
+ 2019-01-28 23:00:00.000000+0000 |    41 |            Venezuela
+ 2019-01-28 23:00:00.000000+0000 |    40 |        BestCoverSong
+ 2019-01-28 23:00:00.000000+0000 |    40 |          LeftUsShook
+ 2019-01-28 23:00:00.000000+0000 |    40 |         ShortyAwards
+ 2019-01-28 23:00:00.000000+0000 |    37 | FaveTourPhotographer
+
+
+cqlsh>  select * from speed_layer.current_view;
+
+ id      | view_name
+---------+--------------
+ current | speed_view_b
+
+
+ cqlsh> select * from speed_layer.speed_view_b where date_hour = '2019-01-29 14:00:00.000' limit 10;
+
+ date_hour                       | count | hashtag
+---------------------------------+-------+------------------------
+ 2019-01-29 13:00:00.000000+0000 |   128 |           iHeartAwards
+ 2019-01-29 13:00:00.000000+0000 |    83 |           TiffanyYoung
+ 2019-01-29 13:00:00.000000+0000 |    73 |       BestSoloBreakout
+ 2019-01-29 13:00:00.000000+0000 |    54 |              SEVENTEEN
+ 2019-01-29 13:00:00.000000+0000 |    53 |                    BTS
+ 2019-01-29 13:00:00.000000+0000 |    50 |                 세븐틴
+ 2019-01-29 13:00:00.000000+0000 |    45 |       YOU_MADE_MY_DAWN
+ 2019-01-29 13:00:00.000000+0000 |    40 | DonKissFantasticThankU
+ 2019-01-29 13:00:00.000000+0000 |    37 |               Viswasam
+ 2019-01-29 13:00:00.000000+0000 |    32 |                   GOT7
+
+ cqlsh> select * from serving_layer.serving_last_date_hour;
+
+ id     | date_hour
+--------+---------------------------------
+ latest | 2019-01-29 10:00:00.000000+0000
+
+
+cqlsh> select * from speed_layer.speed_view_a where date_hour < '2019-01-29 11:00:00.000' limit 10 ALLOW FILTERING;
+
+ date_hour | count | hashtag
+-----------+-------+---------
+
+ cqlsh> select * from speed_layer.speed_view_b where date_hour < '2019-01-29 11:00:00.000' limit 10 ALLOW FILTERING;
+
+ date_hour                       | count | hashtag
+---------------------------------+-------+------------------
+ 2019-01-29 00:00:00.000000+0000 |   197 |     iHeartAwards
+ 2019-01-29 00:00:00.000000+0000 |    83 |     AGTChampions
+ 2019-01-29 00:00:00.000000+0000 |    73 |    instagramdown
+ 2019-01-29 00:00:00.000000+0000 |    64 |        Instagram
+ 2019-01-29 00:00:00.000000+0000 |    55 | BestSoloBreakout
+ 2019-01-29 00:00:00.000000+0000 |    49 | ALDUBxADNOneTeam
+ 2019-01-29 00:00:00.000000+0000 |    48 |      BestFanArmy
+ 2019-01-29 00:00:00.000000+0000 |    47 |     TiffanyYoung
+ 2019-01-29 00:00:00.000000+0000 |    44 |        instagram
+ 2019-01-29 00:00:00.000000+0000 |    35 |        ToyStory4
