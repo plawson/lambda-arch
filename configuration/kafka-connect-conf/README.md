@@ -43,7 +43,7 @@ $ curl -XPOST -H "Content-Type: application/json" http://k8s-node02:8083/connect
 }'
 ```
 ### HDFS sink connector
-The Twitter standard free API is used to pull tweets. This API offers two streaming modes, "filter" which requires filtering criteron or "sample" which supplies a sample of all tweets on each pull request. Using this API takes five to ten hours to pull 100 000 tweets, which is an average of 30Mb for an Avro file. This is not optimal for HDFS as the default block size is 128Mb, but this will do for this prototype as that pull rate wil not produce to many HDFS files. 
+The Twitter standard free API is used to pull tweets. This API offers two streaming modes, "filter" which requires filtering criteron and "sample" which supplies a sample of all tweets on each pull request. Using this API takes five to ten hours to pull 100 000 tweets, which on average is a 30Mb Avro file. This is not optimal for HDFS as the default block size is 128Mb, but this will do for the prototype as the pull rate will not produce to many HDFS files. 
 ```console
 $ curl -XPOST -H "Content-Type: application/json" http://k8s-node02:8083/connectors -d '{
   "name": "LambdaHDFSSink",
