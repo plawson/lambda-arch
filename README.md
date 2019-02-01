@@ -1,6 +1,6 @@
 # lambda-arch
 
-This is a Lambda Architecture project to ingest, store ans analyse tweets. The tweets are saved in a data lake for later batch processing. Meanwhile, they are aggregated in an NoSQL databes in real time using streaming technologies.
+This is a Lambda Architecture project to ingest, store ans analyse tweets. The tweets are saved in a data lake for later batch processing. Meanwhile, they are aggregated into an NoSQL database in real time using streaming technologies.
 
 ## On-Premises setup
 The VMs are created on a bare-metal (2 NIC) server with two 12 core CPUs, 256Gb of memory and a 2Tb SSD internal drive. The VM disks are located on a NAS (4 NIC) with eight 8Tb disks in a RAID 6 volume group (39Tb space) mounted using ISCSI via DM-Multipath. The ISCSI LUN is configured with multi session enabled so that all I/O are load balanced across the 6 NICs. All 6 NICs are connected to a high speed Netgear switch.
