@@ -42,7 +42,7 @@ object SpeedLayerViewSwitcher {
       session.execute("INSERT INTO speed_layer.current_view (id, view_name) VALUES('current', '" + nextSpeedViewName + "')")
 
       // Purge obsolete records from the former view
-          val keysToDeleteRS = session.execute("select distinct date_hour from speed_layer.speed_view_a where date_hour < " + latestDate + " ALLOW FILTERING")
+          val keysToDeleteRS = session.execute("select distinct date_hour from speed_layer." + currentSpeedViewRS" + " where date_hour < " + latestDate + " ALLOW FILTERING")
           while (!keysToDeleteRS.isExhausted) {
             session.execute("DELETE FROM speed_layer." + currentSpeedViewName + " WHERE date_hour = " + keysToDeleteRS.one().getTimestamp("date_hour").getTime)
           }
